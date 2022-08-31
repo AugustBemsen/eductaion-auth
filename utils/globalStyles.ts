@@ -11,6 +11,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.colors.bg};
     position: relative;
+    width: 100vw;
+    height: 100vh;
     overflow-x: hidden;    
     -ms-overflow-style: none; 
     scrollbar-width: none; 

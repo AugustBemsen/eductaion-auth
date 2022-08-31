@@ -18,11 +18,11 @@ const SpinnerStyles = styled.div`
     }
   }
   .loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 10px solid #f3f3f3; /* Light grey */
-    border-top: 10px solid #383636; /* Black */
+    width: 25px;
+    height: 25px;
+    border: 2.5px solid ${({ theme }) => theme.colors.white}; /* Light grey */
+    border-top: 2.5px solid ${({ theme }) => theme.colors.dark}; /* Black */
     border-radius: 50%;
-    animation: spinner 1.5s linear infinite;
+    animation: spinner 0.4s linear infinite;
   }
 `;

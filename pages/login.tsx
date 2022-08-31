@@ -27,12 +27,14 @@ const Login: NextPage = () => {
         loading={isLoading}
         onSubmit={handleSubmit(onSubmit)}
       >
-        {loginFormInputs.map(({ placeholder, name, type, rules }) => (
+        <h1 className="title">Login</h1>
+        {loginFormInputs.map(({ placeholder, name, type, rules, label }) => (
           <Input
             key={name}
             id={`login-${name}`}
             placeholder={placeholder}
             type={type}
+            label={label}
             name={name}
             register={register}
             rules={rules}
@@ -46,4 +48,19 @@ const Login: NextPage = () => {
 
 export default Login;
 
-const AuthStyle = styled.div``;
+const AuthStyle = styled.div`
+  width: 500px;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .title {
+    margin-bottom: 2rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: calc(100% - 3rem);
+  }
+`;

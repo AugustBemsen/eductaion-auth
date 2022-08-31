@@ -63,11 +63,9 @@ const Input = <TFormValues extends Record<string, unknown>>(
 
       <ErrorMessage
         errors={errors}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         name={name as any}
         render={({ message }) => <div className="error">{message}</div>}
       />
-      {/* {isError && } */}
     </StyledInputWrapper>
   );
 };
@@ -78,20 +76,19 @@ const StyledInputWrapper = styled.div<StyleProps>`
   width: 100%;
   position: relative;
   overflow: hidden;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.9rem;
 
   label {
     color: inherit;
     display: block;
-    margin-left: 0.5rem;
     margin-bottom: 0.5rem;
+    font-size: ${({ theme }) => theme.fonts.sizes.label};
   }
 
   input {
     width: 100%;
-    padding: 1.5rem;
-    font-size: ${({ theme }) => theme.fonts.sizes.p};
-    color: ${({ theme }) => theme.colors.primary};
+    padding: 1rem;
+    font-size: ${({ theme }) => theme.fonts.sizes.placeholder};
     border: ${({ theme, isError }) =>
       isError
         ? `${theme.border.width.normal} solid ${theme.colors.error}`
@@ -107,7 +104,7 @@ const StyledInputWrapper = styled.div<StyleProps>`
   }
 
   .error {
-    font-size: ${({ theme }) => theme.fonts.sizes.placeholder};
+    font-size: ${({ theme }) => theme.fonts.sizes.label};
     color: ${({ theme }) => theme.colors.error};
     margin-top: 0.2rem;
     font-weight: ${({ theme }) => theme.fonts.weights.regular};
