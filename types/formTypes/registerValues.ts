@@ -2,7 +2,7 @@ type registerTypes = {
   email: string;
   password: string;
   fullName: string;
-  userType: "Student" | "Teacher";
+  userType: "student" | "teacher";
 };
 
 export type RegisterFormInputDetails = {

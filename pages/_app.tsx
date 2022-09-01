@@ -1,8 +1,10 @@
 import type { AppProps } from "next/app";
 import Router from "next/router";
 import NProgress from "nprogress";
-import "nprogress/nprogress.css";
 import { ThemeProvider } from "styled-components";
+import { ToastProvider } from "react-toast-notifications";
+import "nprogress/nprogress.css";
+
 import GlobalStyle from "../utils/globalStyles";
 import theme from "../utils/theme";
 
@@ -15,8 +17,10 @@ Router.events.on("routeChangeError", () => NProgress.done());
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Component {...pageProps} />
+      <ToastProvider placement="bottom-center">
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ToastProvider>
     </ThemeProvider>
   );
 }
