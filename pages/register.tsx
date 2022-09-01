@@ -4,31 +4,32 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Input from "../components/input";
 import FormWrapper from "../hoc/FormWrapper";
 import AuthStyle from "../styles/AuthStyles";
-import loginTypes from "../types/formTypes/loginValues";
-import { loginFormInputs } from "../utils/formInputs";
+import registerTypes from "../types/formTypes/registerValues";
 
-const Login: NextPage = () => {
+import { registerFormInputs } from "../utils/formInputs";
+
+const Register: NextPage = () => {
   const [isLoading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<loginTypes>({
+  } = useForm<registerTypes>({
     mode: "all",
     reValidateMode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<loginTypes> = async (data) => {};
+  const onSubmit: SubmitHandler<registerTypes> = async (data) => {};
 
   return (
     <AuthStyle>
       <FormWrapper
-        btnLabel="Login"
+        btnLabel="Register"
         loading={isLoading}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className="title">Login</h1>
-        {loginFormInputs.map(({ placeholder, name, type, rules, label }) => (
+        <h1 className="title">Register</h1>
+        {registerFormInputs.map(({ placeholder, name, type, rules, label }) => (
           <Input
             key={name}
             id={`login-${name}`}
@@ -46,4 +47,4 @@ const Login: NextPage = () => {
   );
 };
 
-export default Login;
+export default Register;

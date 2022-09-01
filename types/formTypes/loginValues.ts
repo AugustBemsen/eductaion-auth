@@ -1,8 +1,6 @@
 type loginTypes = {
   email: string;
-  name?: string;
   password: string;
-  label: string;
 };
 
 export type LoginFormInputDetails = {
