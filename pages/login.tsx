@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { useToasts } from "react-toast-notifications";
 import Cookies from "universal-cookie";
 
@@ -16,6 +18,16 @@ const Login: NextPage = () => {
   const cookies = new Cookies();
 
   const [isLoading, setLoading] = useState(false);
+
+  // handle validations
+  const inputSchema = yup
+    .object()
+    .shape({
+      email: yup.string().email().required(),
+      password: yup.string().required().min(8),
+    })
+    .required();
+
   const {
     register,
     handleSubmit,
@@ -23,6 +35,7 @@ const Login: NextPage = () => {
   } = useForm<loginTypes>({
     mode: "all",
     reValidateMode: "onChange",
+    resolver: yupResolver(inputSchema),
   });
 
   const onSubmit: SubmitHandler<loginTypes> = async (data) => {

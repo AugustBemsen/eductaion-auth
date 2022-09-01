@@ -2,6 +2,8 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { useToasts } from "react-toast-notifications";
 
 import Input from "../components/input";
@@ -19,6 +21,17 @@ const Register: NextPage = () => {
 
   const [isLoading, setLoading] = useState(false);
   const [selectedRole, setSelectedRole] = useState("student");
+
+  // handle validations
+  const inputSchema = yup
+    .object()
+    .shape({
+      email: yup.string().email().required(),
+      password: yup.string().required().min(8),
+      fullName: yup.string().required(),
+    })
+    .required();
+
   const {
     register,
     handleSubmit,
@@ -26,6 +39,7 @@ const Register: NextPage = () => {
   } = useForm<registerTypes>({
     mode: "all",
     reValidateMode: "onChange",
+    resolver: yupResolver(inputSchema),
   });
 
   const userOptions: { title: string; value: string }[] = [

@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.0",
+    "@hookform/resolvers": "^2.9.7",
     "axios": "^0.27.2",
     "next": "12.2.5",
     "nprogress": "^0.2.0",
@@ -27,7 +28,8 @@
     "react-hook-form": "^7.34.2",
     "react-toast-notifications": "^2.5.1",
     "styled-components": "^5.3.5",
-    "universal-cookie": "^4.0.4"
+    "universal-cookie": "^4.0.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "18.7.14",
