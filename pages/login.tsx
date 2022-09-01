@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useToasts } from "react-toast-notifications";
+import Cookies from "universal-cookie";
 
 import Input from "../components/input";
 import FormWrapper from "../hoc/FormWrapper";
@@ -12,6 +13,7 @@ import { loginFormInputs } from "../utils/formInputs";
 
 const Login: NextPage = () => {
   const { addToast } = useToasts();
+  const cookies = new Cookies();
 
   const [isLoading, setLoading] = useState(false);
   const {
@@ -27,11 +29,15 @@ const Login: NextPage = () => {
     setLoading(true);
     Axios.post("/user/login", data)
       .then((res) => {
-        const firstName = res?.data?.fullName?.split(" ")[0];
+        const result = res.data;
+        const firstName = result.fullName?.split(" ")[0];
+        // eslint-disable-next-line no-underscore-dangle
+        const userID = result?._id;
         addToast(`Logged in as ${firstName} `, {
           appearance: "success",
           autoDismiss: true,
         });
+        cookies.set("eduUser", userID, { path: "/login" });
         setLoading(false);
       })
       .catch((err) => {
