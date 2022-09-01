@@ -32,6 +32,7 @@ const Register: NextPage = () => {
     })
     .required();
 
+  // form handler
   const {
     register,
     handleSubmit,
@@ -42,6 +43,7 @@ const Register: NextPage = () => {
     resolver: yupResolver(inputSchema),
   });
 
+  // select options for role
   const userOptions: { title: string; value: string }[] = [
     {
       title: "Student",
@@ -53,6 +55,7 @@ const Register: NextPage = () => {
     },
   ];
 
+  // handle form submit
   const onSubmit: SubmitHandler<registerTypes> = async (data) => {
     const formData = {
       ...data,

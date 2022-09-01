@@ -28,6 +28,7 @@ const Login: NextPage = () => {
     })
     .required();
 
+  // form handler
   const {
     register,
     handleSubmit,
@@ -38,6 +39,7 @@ const Login: NextPage = () => {
     resolver: yupResolver(inputSchema),
   });
 
+  // handle form submit
   const onSubmit: SubmitHandler<loginTypes> = async (data) => {
     setLoading(true);
     Axios.post("/user/login", data)
